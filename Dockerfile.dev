@@ -1,0 +1,17 @@
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install
+
+COPY . .
+
+CMD ["npm", "run", "start"]
+
+# docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app c8f6736d3981
+# *************
+# Run tests by overriding default npm start comand
+# docker build -f Dockerfile.dev . 
+# docker run -it 3ca8ab08856e npm run test
+# *************
